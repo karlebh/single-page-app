@@ -1,15 +1,15 @@
 <template>
     <app-layout>
-        <template #header>
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                Dashboard
-            </h2>
-        </template>
-
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                    <welcome />
+                <div class="text-center">
+                    <h1 class="text-gray-600 text-2xl">
+                        Welcome To <span class="text-2xl font-extrabold text-blue-500">Song!</span>
+                    </h1>
+
+                    <p class="mt-10 text-5xl font-semibold">
+                        Enjoy! Explore the links above!
+                    </p>
                 </div>
             </div>
         </div>
@@ -18,12 +18,10 @@
 
 <script>
     import AppLayout from '@/Layouts/AppLayout'
-    import Welcome from '@/Jetstream/Welcome'
 
     export default {
         components: {
             AppLayout,
-            Welcome,
         },
     }
 </script>

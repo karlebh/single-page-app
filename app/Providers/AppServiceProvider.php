@@ -18,11 +18,12 @@ class AppServiceProvider extends ServiceProvider
         // Synchronously
         Inertia::share('appName', config('app.name'));
 
-        // // Lazily
-        // Inertia::share('user', fn (Request $request) => $request->user()
-        //     ? $request->user()->only('id', 'name', 'email')
-        //     : null
-        // );
+        Inertia::share('errors', function () {
+            return session()->get('errors') 
+                    ? session()->get('errors')->getBag('default')->getMessages() 
+                    : (object) [] ;
+        });
+
     }
 
     /**

@@ -26,9 +26,9 @@ class ArtistFormRequest extends FormRequest
         return [
             'name' => 'required|min:3|max:20|string',
             'age' => 'nullable|integer',
-            'albums' => '',
-            'country' => '',
-            'latest_hit' => '',
+            'albums' => 'nullable',
+            'country' => 'nullable',
+            'latest_hit' => 'nullable',
         ];
     }
 }

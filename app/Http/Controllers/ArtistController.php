@@ -10,6 +10,10 @@ use Illuminate\Support\Str;
 
 class ArtistController extends Controller
 {
+    public function __construct()
+    {
+        return $this->middleware('edit')->only('edit');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -87,14 +91,17 @@ class ArtistController extends Controller
     {
         $slug = trim(Str::limit(Str::slug($request->validated()['name']), 50, ''), '-');
 
-        $request
-            ->user()
-            ->artists()
-            ->updateOrCreate(
-                array_merge(['slug' => $slug], array_filter($request->validated()))
+        $artist
+            ->update(
+                array_filter(
+                    array_merge(
+                        ['slug' => $slug], 
+                        $request->validated()
+                    )
+                )
             );
 
-        return redirect()->route('artist.index');
+        return redirect()->route('artist.show', $artist);
     }
 
     /**

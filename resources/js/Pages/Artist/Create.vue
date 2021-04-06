@@ -1,9 +1,9 @@
 <template>
     <app-layout>
         <div class="flex flex-col content-center t-2">
-            <!-- component -->
+            <jet-validation-errors class="text-center mt-5" />
             <form @submit.prevent="addArtist">
-                <div class="max-w-2xl py-10 px-5 m-auto w-full mt-1">
+                <div class="max-w-2xl py-5 px-5 m-auto w-full mt-1">
 
                   <div class="text-3xl mb-6 text-center ">
                     Enter an artist details!
@@ -13,7 +13,8 @@
 
                     <div class="col-span-2">
                         <label for="name" class="md:text-xl">Name</label><br>
-                        <input type="text" class="border-solid border-gray-400 border-2 p-3 md:text-xl w-full" placeholder="Name" v-model="form.name"/>
+                        <input type="text" class="border-solid border-gray-400 border-2 p-3 md:text-xl w-full" placeholder="Name" v-model="form.name" required />
+                        <!-- // <div v-if="$page.errors.name">{{ $page.errors.name[0] }}</div> -->
                     </div>
 
                     <div class="col-span-2">
@@ -49,6 +50,7 @@
 
 <script>
     import AppLayout from '@/Layouts/AppLayout'
+    import JetValidationErrors from '@/Jetstream/ValidationErrors'
 
     export default {
         data() {
@@ -72,6 +74,7 @@
 
         components: {
             AppLayout,
+            JetValidationErrors,
         },
     }
 </script>

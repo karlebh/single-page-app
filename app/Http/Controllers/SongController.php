@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Song;
+use Inertia\Inertia;
 use Illuminate\Http\Request;
 use App\Http\Requests\SongFormRequest;
 
@@ -16,7 +17,7 @@ class SongController extends Controller
     public function index()
     {
         return Inertia::render('Song/Index', [
-            'songs' => Song::latest()->paginate()
+            'songs' => Song::with('artist')->latest()->paginate()
         ]);
     }
 
@@ -28,57 +29,11 @@ class SongController extends Controller
      */
     public function store(SongFormRequest $request)
     {
-        // dd($request->validated());
+        $request
+                ->user()
+                ->songs()
+                ->firstOrCreate($request->validated());
 
-            $request
-                    ->user()
-                    ->songs()
-                    ->firstOrCreate($request->validated());
-
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Song  $song
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Song $song)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Song  $song
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Song $song)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Song  $song
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Song $song)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Song  $song
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Song $song)
-    {
-        //
+        return redirect()->back();
     }
 }

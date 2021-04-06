@@ -1,16 +1,16 @@
 <template>
     <app-layout>
 
-<div class="flex mx-20 justify-between my-10">
-    <inertia-link v-if="artists.prev_page_url" :href="artists.prev_page_url">Previous</inertia-link> 
+    <div class="flex mx-20 justify-between my-10">
+        <inertia-link v-if="artists.prev_page_url" :href="artists.prev_page_url">Previous</inertia-link> 
 
-    <inertia-link v-if="artists.next_page_url" :href="artists.next_page_url">Next</inertia-link>
-</div>
+        <inertia-link v-if="artists.next_page_url" :href="artists.next_page_url">Next</inertia-link>
+    </div>
 
 
         <!-- component -->
         <div class="container mx-auto px-4 sm:px-8">
-            <div class="py-8">
+            <div v-if="artists.data">
                 <div>
                     <h2 class="text-2xl font-semibold leading-tight text-center">All Artists</h2>
                 </div>
@@ -20,29 +20,33 @@
                             <thead>
                                 <tr>
                                     <th
-                                        class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                        class="px-5 py-3 border-b-2 border-gray-200 bg-gray-200 text-center text-xs font-bold text-gray-600 uppercase tracking-wider">
                                         Name
                                     </th>
                                     <th
-                                        class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                                        Id
+                                        class="px-5 py-3 border-b-2 border-gray-200 bg-gray-200 text-center text-xs font-bold text-gray-600 uppercase tracking-wider">
+                                        Age
                                     </th>
                                     <th
-                                        class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                        class="px-5 py-3 border-b-2 border-gray-200 bg-gray-200 text-center text-xs font-bold text-gray-600 uppercase tracking-wider">
                                         Latest Hit
                                     </th>
                                     <th
-                                        class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                                        Albums
+                                        class="px-5 py-3 border-b-2 border-gray-200 bg-gray-200 text-center text-xs font-bold text-gray-600 uppercase tracking-wider">
+                                        Action
                                     </th>
                                 </tr>
                             </thead>
                             <tbody class="tbody" v-for="artist in artists.data">
-                                <table-row class ="trow" :artist="artist" />
+                                <table-row class="trow" :artist="artist" />
                             </tbody>
                         </table>
                     </div>
                 </div>
+            </div>
+
+            <div v-else class="text-center text-xl">
+                <p>No Data</p>
             </div>
         </div>
         
@@ -57,12 +61,6 @@
 
     export default {
         props: ['artists'],
-
-        data() {
-            return {
-                page: '',
-            }
-        },
 
         components: {
             AppLayout,

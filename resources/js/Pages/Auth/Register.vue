@@ -1,7 +1,8 @@
 <template>
     <jet-authentication-card>
         <template #logo>
-            <jet-authentication-card-logo />
+            <!-- <jet-authentication-card-logo /> -->
+            <h1 class="text-2xl font-extrabold text-blue-500">Song</h1>
         </template>
 
         <jet-validation-errors class="mb-4" />

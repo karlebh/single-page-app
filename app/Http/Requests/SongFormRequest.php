@@ -25,10 +25,10 @@ class SongFormRequest extends FormRequest
     {
         return [
             'artist_id' => 'required|integer',
-            'name' => 'required|string|max:225',
-            'duration' => 'nullable',
-            'download_count' => 'nullable',
-            'hit' => 'nullable',
+            'name' => 'required|string|min:3|max:225',
+            'duration' => 'nullable|integer',
+            'download_count' => 'nullable|integer',
+            'hit' => 'nullable|boolean',
         ];
     }
 }

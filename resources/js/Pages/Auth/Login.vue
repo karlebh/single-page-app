@@ -1,7 +1,8 @@
 <template>
     <jet-authentication-card>
         <template #logo>
-            <jet-authentication-card-logo />
+            <!-- <jet-authentication-card-logo /> -->
+            <h1 class="text-2xl font-extrabold text-blue-500">Song</h1>
         </template>
 
         <jet-validation-errors class="mb-4" />
@@ -31,6 +32,10 @@
             <div class="flex items-center justify-end mt-4">
                 <inertia-link v-if="canResetPassword" :href="route('password.request')" class="underline text-sm text-gray-600 hover:text-gray-900">
                     Forgot your password?
+                </inertia-link> 
+
+                <inertia-link  :href="route('register')" class="ml-4 underline text-md text-gray-600 hover:text-gray-900">
+                    Register
                 </inertia-link>
 
                 <jet-button class="ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">

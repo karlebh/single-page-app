@@ -7,7 +7,7 @@ use Inertia\Inertia;
 
 
 Route::get('/', function () {
-    return Inertia::render('Welcome', [
+    return Inertia::render('Auth/Login', [
         'canLogin' => Route::has('login'),
         'canRegister' => Route::has('register'),
         'laravelVersion' => Application::VERSION,
@@ -19,10 +19,8 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->name('dashboard');
 
-Route::get('request', function () {
-	return dd(app());
-});
 
+//There is a middleware on Edit method in ArtistController
 Route::group(['middleware' => 'auth'], function () {
 	Route::resource('artist', 'ArtistController');
 	Route::resource('song', 'SongController');
