@@ -11,3 +11,9 @@ The repository itself is centered around Songs. Allowing the authenticated user 
 - Vue
 - TailwindCss
 
+# Installation
+
+- Downoad or clone the repository using `git clone git@github.com:karlebh/single-page-app.git`
+- cd into the folder `cd single-page-app`
+- install the dependencies `composer install`
+- start the application `php artisan serve`
