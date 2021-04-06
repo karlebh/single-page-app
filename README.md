@@ -16,5 +16,5 @@ The repository itself is centered around Songs. Allowing the authenticated user 
 - Downoad or clone the repository using `git clone git@github.com:karlebh/single-page-app.git`
 - cd into the folder `cd single-page-app`
 - install the dependencies `composer install`
-- run `npm instll && npm run dev`
+- run `npm install && npm run dev`
 - start the application `php artisan serve`
