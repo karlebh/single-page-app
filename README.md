@@ -4,10 +4,10 @@ This is a single page application, meaning, it only does a full page load once u
 
 The repository itself is centered around Songs. Allowing the authenticated user to enter an artist details and also enter a songs the particular artist has released.
 
-#Stacks
+# Stacks
 
--Laravel
--Inertia
--Vue
--TailwindCss
+- Laravel
+- Inertia
+- Vue
+- TailwindCss
 
